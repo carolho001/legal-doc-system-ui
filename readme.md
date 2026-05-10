@@ -2,7 +2,7 @@
 
 Dự án sử dụng React 19 + Vite 8 + Ant Design để xây dựng hệ thống quản lý văn bản pháp luật.
 
-## 🛠 Yêu cầu hệ thống
+## Yêu cầu hệ thống
 - **Node.js**: Phiên bản 18.x hoặc 20.x trở lên (Khuyến nghị bản LTS).
 - **Trình quản lý gói**: npm (đi kèm khi cài Node).
 
@@ -11,3 +11,4 @@ Dự án sử dụng React 19 + Vite 8 + Ant Design để xây dựng hệ thố
    ```bash
    git clone https://github.com/carolho001/legal-doc-system-ui
    cd legal-doc-system
+   copy .env.example thành .env trước khi chạy
