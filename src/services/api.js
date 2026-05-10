@@ -1,3 +1,15 @@
+import axios from 'axios';
+
+//Instance axios dùng chung
+const api = axios.create({
+  baseURL: '/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+
+//Mock data
 const MOCK_LAWS = [
   {
     id: 'hien-phap-2013',
