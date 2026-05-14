@@ -12,7 +12,7 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
   height: 8px;
 }
 
@@ -41,12 +41,12 @@ body {
 }
 
 .ant-menu-item-selected {
-  color: #8b1a2b !important;
+  color: #722F37 !important;
   font-weight: 600 !important;
 }
 
 .ant-menu-item:hover {
-  color: #8b1a2b !important;
+  color: #722F37 !important;
 }
 
 .ant-card {
@@ -65,14 +65,14 @@ body {
 }
 
 .ant-btn-primary {
-  background: #8b1a2b !important;
-  border-color: #8b1a2b !important;
+  background: #722F37 !important;
+  border-color: #722F37 !important;
   border-radius: 8px !important;
 }
 
 .ant-btn-primary:hover {
-  background: #a02035 !important;
-  border-color: #a02035 !important;
+  background: #5a252c !important;
+  border-color: #5a252c !important;
 }
 
 mark {
@@ -89,14 +89,14 @@ h1, h2, h3, h4 {
 
 /* Hero section */
 .hero-gradient {
-  background: linear-gradient(135deg, #8b1a2b 0%, #6b1220 50%, #4a0c15 100%);
+  background: linear-gradient(135deg, #722F37 0%, #6b1220 50%, #4a0c15 100%);
 }
 
 .law-pattern {
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-/* Fix Ant Design Layout border */
+
 .ant-layout {
   background: #faf9f7 !important;
 }

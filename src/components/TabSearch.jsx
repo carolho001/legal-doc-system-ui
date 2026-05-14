@@ -69,7 +69,6 @@ const TabSearch = () => {
   return (
   <div className="h-[calc(100vh-64px)] flex flex-col">
     {hasSearched ? (
-      /* ========== ĐÃ SEARCH ========== */
       <div className="flex-1 flex overflow-hidden">
         
         {/* Sidebar trái - search + list kết quả */}
@@ -102,7 +101,6 @@ const TabSearch = () => {
             </div>
           </div>
           
-          {/* List kết quả cuộn */}
           <div className="flex-1 overflow-y-auto px-5 pb-5">
             <Spin spinning={loading} size="small">
               {results.length > 0 ? (
@@ -204,16 +202,6 @@ const TabSearch = () => {
           className="relative overflow-hidden pb-6 pt-8"
           style={{ background: 'linear-gradient(135deg, #1e3a5f 0%, #2d1f3e 50%, #8b1a2b 100%)' }}
         >
-          <div className="absolute inset-0 opacity-5">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
-          </div>
           
           <div className="relative z-10 max-w-3xl mx-auto px-6 pt-6 pb-8 text-center">
             <div 

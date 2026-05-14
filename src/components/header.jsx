@@ -1,10 +1,10 @@
 import React from 'react';
-import { Menu, Layout, Tooltip } from 'antd'; 
-import { Search, MessageSquare, Scale, Home, User } from 'lucide-react';
+import { Menu, Layout, Tooltip, Dropdown } from 'antd'; 
+import { Search, MessageSquare, Scale, Home, User, LogOut, ChevronDown } from 'lucide-react';
 
 const { Header } = Layout;
 
-const AppHeader = ({ activeTab, onTabChange, isLoggedIn, user }) => {
+const AppHeader = ({ activeTab, onTabChange, user, onOpenAuth, onLogout }) => {
   const mainMenuItems = [
     {
       key: 'home',
@@ -23,13 +23,30 @@ const AppHeader = ({ activeTab, onTabChange, isLoggedIn, user }) => {
     },
   ];
 
+  const userMenuItems = [
+    {
+      key: 'profile',
+      label: 'Hồ sơ cá nhân',
+      icon: <User size={14} />,
+    },
+    {
+      key: 'logout',
+      label: 'Đăng xuất',
+      icon: <LogOut size={14} className="text-red-500" />,
+    },
+  ];
+
+  const handleUserMenuClick = ({ key }) => {
+    if (key === 'profile') onTabChange('profile');
+    if (key === 'logout') onLogout();
+  };
+
   return (
     <Header 
       className="shadow-sm px-6 flex items-center justify-between sticky top-0 z-50"
       style={{ 
         height: 64, 
-        lineHeight: '64px', 
-        padding: '0 24px',
+        lineHeight: '64px',
         background: '#faf9f7'
       }}
     >
@@ -68,28 +85,42 @@ const AppHeader = ({ activeTab, onTabChange, isLoggedIn, user }) => {
           }}
           overflowedIndicator={null} 
         />
-
-        {/* Nút Auth với Tooltip */}
-        <Tooltip 
-          title={isLoggedIn ? (user?.name || 'Cá nhân') : 'Sign In / Sign Up'} 
-          placement="bottomRight"
-        >
-          <div 
-            className="flex items-center justify-center cursor-pointer hover:opacity-70 transition-opacity"
-            onClick={() => onTabChange(isLoggedIn ? 'profile' : 'auth')}
-            style={{ width: 40, height: 64 }}
+        
+        {/* USER */}
+        {user ? (
+          <Dropdown 
+            menu={{ items: userMenuItems, onClick: handleUserMenuClick }} 
+            placement="bottomRight"
+            arrow
           >
-            {isLoggedIn && user?.avatar ? (
-              <img 
-                src={user.avatar} 
-                alt="avatar" 
-                className="w-7 h-7 rounded-full object-cover border border-gray-200" 
-              />
-            ) : (
-              <User size={20} className="text-[#2d2d2d]" /> 
-            )}
-          </div>
-        </Tooltip>
+            <div className="flex items-center gap-2 cursor-pointer hover:bg-gray-100 px-2 py-1 rounded-lg transition-colors">
+              <div 
+                className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0"
+                style={{ background: '#1e3a5f' }}
+              >
+                {user.avatar ? (
+                  <img src={user.avatar} alt="" className="w-full h-full rounded-full object-cover" />
+                ) : (
+                  user.name?.charAt(0).toUpperCase()
+                )}
+              </div>
+              <span className="text-sm text-gray-700 hidden md:block max-w-25 truncate">
+                {user.name}
+              </span>
+              <ChevronDown size={14} className="text-gray-400" />
+            </div>
+          </Dropdown>
+        ) : (
+          <Tooltip title="Đăng nhập / Đăng ký" placement="bottomRight">
+            <button
+              onClick={onOpenAuth}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-gray-600 hover:text-[#722F37] hover:bg-[#722F37]/5 transition-all border-0 border-gray-200 hover:border-[#722F37]/30"
+            >
+              <User size={18} />
+              <span className="hidden sm:inline">Đăng nhập</span>
+            </button>
+          </Tooltip>
+        )}
       </div>
 
       <style>

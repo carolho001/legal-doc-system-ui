@@ -7,7 +7,7 @@ const PreviewPanel = ({ document, keyword, onClose }) => {
   const contentRef = useRef(null);
   const [currentMatch, setCurrentMatch] = useState(0);
   
-  // Tính toán các vị trí match trong nội dung
+ 
   const matches = useMemo(() => {
     if (!document?.fullContent || !keyword) return [];
     const regex = new RegExp(`(${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
@@ -21,7 +21,7 @@ const PreviewPanel = ({ document, keyword, onClose }) => {
 
   const totalMatches = matches.length;
 
-  // Cuộn đến match cụ thể
+  
   const scrollToMatch = (index) => {
     if (!contentRef.current || totalMatches === 0) return;
     const markElements = contentRef.current.querySelectorAll('mark[data-match]');
@@ -31,7 +31,7 @@ const PreviewPanel = ({ document, keyword, onClose }) => {
     }
   };
 
-  // Tự động cuộn đến match đầu tiên khi mở văn bản mới
+  
   useEffect(() => {
     if (totalMatches > 0) {
       setTimeout(() => scrollToMatch(0), 100);
@@ -39,7 +39,7 @@ const PreviewPanel = ({ document, keyword, onClose }) => {
     setCurrentMatch(0);
   }, [document?.id, keyword]);
 
-  // Xử lý phím tắt Enter/F3 để next match
+  
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'F3' || (e.key === 'Enter' && e.shiftKey)) {
@@ -70,7 +70,7 @@ const PreviewPanel = ({ document, keyword, onClose }) => {
     );
   }
 
-  // Highlight nội dung đầy đủ với đánh số match
+  
   const renderHighlightedContent = () => {
     if (!document.fullContent || !keyword) return document.fullContent;
     
